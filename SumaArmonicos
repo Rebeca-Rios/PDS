@@ -1,0 +1,55 @@
+import numpy as np
+import matplotlib.pyplot as plt
+
+# Frecuencia en Hz
+f1 = 60
+f2 = 180
+f3 = 300
+
+# Amplitud en V
+a1 = 120
+a2 = 0.5*a1
+a3 = 0.3*a1
+
+# Tiempo
+t = np.linspace(0, 1/f1, 1000)  # Genera 1000 puntos de tiempo de 0 a 1 periodo de f1
+
+# Genera la onda senoidal
+y1 = a1 * np.sin(2 * np.pi * f1 * t)
+y2 = a2 * np.sin(2 * np.pi * f2 * t)
+y3 = a3 * np.sin(2 * np.pi * f3 * t)
+y4 = y1 + y2 + y3
+
+# Graficar la onda senoidal
+plt.figure(figsize=(15, 22))
+
+plt.subplot(4,1,1)
+plt.plot(t, y1)
+plt.title(f'Onda de {f1} Hz')
+plt.xlabel('Tiempo (s)')
+plt.ylabel('Amplitud (V)')
+plt.grid()
+
+plt.subplot(4,1,2)
+plt.plot(t, y2)
+plt.title(f'Onda de {f2} Hz')
+plt.xlabel('Tiempo (s)')
+plt.ylabel('Amplitud (V)')
+plt.grid()
+
+plt.subplot(4,1,3)
+plt.plot(t, y3)
+plt.title(f'Onda de {f3} Hz')
+plt.xlabel('Tiempo (s)')
+plt.ylabel('Amplitud (V)')
+plt.grid()
+
+plt.subplot(4,1,4)
+plt.plot(t, y4)
+plt.title('Suma de ondas')
+plt.xlabel('Tiempo (s)')
+plt.ylabel('Amplitud (V)')
+plt.grid()
+
+plt.tight_layout()
+plt.show()
